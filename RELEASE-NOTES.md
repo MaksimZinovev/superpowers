@@ -4,7 +4,7 @@
 
 Superpowers v2.0 makes skills more accessible, maintainable, and community-driven through a major architectural shift.
 
-The headline change is **skills repository separation**: all skills, scripts, and documentation have moved from the plugin into a dedicated repository ([obra/superpowers-skills](https://github.com/obra/superpowers-skills)). This transforms superpowers from a monolithic plugin into a lightweight shim that manages a local clone of the skills repository. Skills auto-update on session start. Users fork and contribute improvements via standard git workflows. The skills library versions independently from the plugin.
+The headline change is **skills repository separation**: all skills, scripts, and documentation have moved from the plugin into a dedicated repository ([MaksimZinovev/superpowers-skills](https://github.com/MaksimZinovev/superpowers-skills)). This transforms superpowers from a monolithic plugin into a lightweight shim that manages a local clone of the skills repository. Skills auto-update on session start. Users fork and contribute improvements via standard git workflows. The skills library versions independently from the plugin.
 
 Beyond infrastructure, this release adds nine new skills focused on problem-solving, research, and architecture. We rewrote the core **using-skills** documentation with imperative tone and clearer structure, making it easier for Claude to understand when and how to use skills. **find-skills** now outputs paths you can paste directly into the Read tool, eliminating friction in the skills discovery workflow.
 
@@ -14,7 +14,7 @@ Users experience seamless operation: the plugin handles cloning, forking, and up
 
 ### Skills Repository Separation
 
-**The biggest change:** Skills no longer live in the plugin. They've been moved to a separate repository at [obra/superpowers-skills](https://github.com/obra/superpowers-skills).
+**The biggest change:** Skills no longer live in the plugin. They've been moved to a separate repository at [MaksimZinovev/superpowers-skills](https://github.com/MaksimZinovev/superpowers-skills).
 
 **What this means for you:**
 
@@ -27,9 +27,10 @@ Users experience seamless operation: the plugin handles cloning, forking, and up
 **Migration:**
 
 If you have an existing installation:
+
 1. Your old `~/.config/superpowers/.git` will be backed up to `~/.config/superpowers/.git.bak`
 2. Old skills will be backed up to `~/.config/superpowers/skills.bak`
-3. Fresh clone of obra/superpowers-skills will be created at `~/.config/superpowers/skills/`
+3. Fresh clone of MaksimZinovev/superpowers-skills will be created at `~/.config/superpowers/skills/`
 
 ### Removed Features
 
@@ -41,12 +42,14 @@ If you have an existing installation:
 ### Skills Repository Infrastructure
 
 **Automatic Clone & Setup** (`lib/initialize-skills.sh`)
-- Clones obra/superpowers-skills on first run
+
+- Clones MaksimZinovev/superpowers-skills on first run
 - Offers fork creation if GitHub CLI is installed
 - Sets up upstream/origin remotes correctly
 - Handles migration from old installation
 
 **Auto-Update**
+
 - Fetches from tracking remote on every session start
 - Auto-merges with fast-forward when possible
 - Notifies when manual sync needed (branch diverged)
@@ -55,6 +58,7 @@ If you have an existing installation:
 ### New Skills
 
 **Problem-Solving Skills** (`skills/problem-solving/`)
+
 - **collision-zone-thinking** - Force unrelated concepts together for emergent insights
 - **inversion-exercise** - Flip assumptions to reveal hidden constraints
 - **meta-pattern-recognition** - Spot universal principles across domains
@@ -63,14 +67,17 @@ If you have an existing installation:
 - **when-stuck** - Dispatch to right problem-solving technique
 
 **Research Skills** (`skills/research/`)
+
 - **tracing-knowledge-lineages** - Understand how ideas evolved over time
 
 **Architecture Skills** (`skills/architecture/`)
+
 - **preserving-productive-tensions** - Keep multiple valid approaches instead of forcing premature resolution
 
 ### Skills Improvements
 
 **using-skills (formerly getting-started)**
+
 - Renamed from getting-started to using-skills
 - Complete rewrite with imperative tone (v4.0.0)
 - Front-loaded critical rules
@@ -79,32 +86,38 @@ If you have an existing installation:
 - Clearer distinction between rigid rules and flexible patterns
 
 **writing-skills**
+
 - Cross-referencing guidance moved from using-skills
 - Added token efficiency section (word count targets)
 - Improved CSO (Claude Search Optimization) guidance
 
 **sharing-skills**
+
 - Updated for new branch-and-PR workflow (v2.0.0)
 - Removed personal/core split references
 
 **pulling-updates-from-skills-repository** (new)
+
 - Complete workflow for syncing with upstream
 - Replaces old "updating-skills" skill
 
 ### Tools Improvements
 
 **find-skills**
+
 - Now outputs full paths with /SKILL.md suffix
 - Makes paths directly usable with Read tool
 - Updated help text
 
 **skill-run**
+
 - Moved from scripts/ to skills/using-skills/
 - Improved documentation
 
 ### Plugin Infrastructure
 
 **Session Start Hook**
+
 - Now loads from skills repository location
 - Shows full skills list at session start
 - Prints skills location info
@@ -112,6 +125,7 @@ If you have an existing installation:
 - Moved "skills behind" warning to end of output
 
 **Environment Variables**
+
 - `SUPERPOWERS_SKILLS_ROOT` set to `~/.config/superpowers/skills`
 - Used consistently throughout all paths
 
@@ -125,6 +139,7 @@ If you have an existing installation:
 ## Documentation
 
 ### README
+
 - Updated for new skills repository architecture
 - Prominent link to superpowers-skills repo
 - Updated auto-update description
@@ -132,6 +147,7 @@ If you have an existing installation:
 - Updated Meta skills list
 
 ### Testing Documentation
+
 - Added comprehensive testing checklist (`docs/TESTING-CHECKLIST.md`)
 - Created local marketplace config for testing
 - Documented manual testing scenarios
@@ -141,16 +157,19 @@ If you have an existing installation:
 ### File Changes
 
 **Added:**
+
 - `lib/initialize-skills.sh` - Skills repo initialization and auto-update
 - `docs/TESTING-CHECKLIST.md` - Manual testing scenarios
 - `.claude-plugin/marketplace.json` - Local testing config
 
 **Removed:**
-- `skills/` directory (82 files) - Now in obra/superpowers-skills
-- `scripts/` directory - Now in obra/superpowers-skills/skills/using-skills/
+
+- `skills/` directory (82 files) - Now in MaksimZinovev/superpowers-skills
+- `scripts/` directory - Now in MaksimZinovev/superpowers-skills/skills/using-skills/
 - `hooks/setup-personal-superpowers.sh` - Obsolete
 
 **Modified:**
+
 - `hooks/session-start.sh` - Use skills from ~/.config/superpowers/skills
 - `commands/brainstorm.md` - Updated paths to SUPERPOWERS_SKILLS_ROOT
 - `commands/write-plan.md` - Updated paths to SUPERPOWERS_SKILLS_ROOT
@@ -160,6 +179,7 @@ If you have an existing installation:
 ### Commit History
 
 This release includes:
+
 - 20+ commits for skills repository separation
 - PR #1: Amplifier-inspired problem-solving and research skills
 - PR #2: Personal superpowers overlay system (later replaced)
@@ -171,7 +191,7 @@ This release includes:
 
 ```bash
 # In Claude Code
-/plugin marketplace add obra/superpowers-marketplace
+/plugin marketplace add MaksimZinovev/superpowers-marketplace
 /plugin install superpowers@superpowers-marketplace
 ```
 
@@ -180,16 +200,19 @@ The plugin handles everything automatically.
 ### Upgrading from v1.x
 
 1. **Backup your personal skills** (if you have any):
+
    ```bash
    cp -r ~/.config/superpowers/skills ~/superpowers-skills-backup
    ```
 
 2. **Update the plugin:**
+
    ```bash
    /plugin update superpowers
    ```
 
 3. **On next session start:**
+
    - Old installation will be backed up automatically
    - Fresh skills repo will be cloned
    - If you have GitHub CLI, you'll be offered the option to fork
@@ -210,7 +233,7 @@ The plugin handles everything automatically.
 
 ### For Contributors
 
-- Skills repository is now at https://github.com/obra/superpowers-skills
+- Skills repository is now at https://github.com/MaksimZinovev/superpowers-skills
 - Fork → Branch → PR workflow
 - See skills/meta/writing-skills/SKILL.md for TDD approach to documentation
 
@@ -226,6 +249,6 @@ None at this time.
 
 ---
 
-**Full Changelog:** https://github.com/obra/superpowers/compare/dd013f6...main
-**Skills Repository:** https://github.com/obra/superpowers-skills
-**Issues:** https://github.com/obra/superpowers/issues
+**Full Changelog:** https://github.com/MaksimZinovev/superpowers/compare/dd013f6...main
+**Skills Repository:** https://github.com/MaksimZinovev/superpowers-skills
+**Issues:** https://github.com/MaksimZinovev/superpowers/issues

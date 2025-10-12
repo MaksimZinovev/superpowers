@@ -5,13 +5,14 @@ Give Claude Code superpowers with a comprehensive skills library of proven techn
 ## Architecture
 
 The superpowers plugin is a minimal shim that:
-- Clones/updates the [superpowers-skills](https://github.com/obra/superpowers-skills) repository to `~/.config/superpowers/skills/`
+
+- Clones/updates the [superpowers-skills](https://github.com/MaksimZinovev/superpowers-skills) repository to `~/.config/superpowers/skills/`
 - Registers hooks that load skills from the local repository
 - Offers users the option to fork the skills repo for contributions
 
-All skills, scripts, and documentation live in the separate [superpowers-skills](https://github.com/obra/superpowers-skills) repository. Edit skills locally, commit changes, and contribute back via pull requests.
+All skills, scripts, and documentation live in the separate [superpowers-skills](https://github.com/MaksimZinovev/superpowers-skills) repository. Edit skills locally, commit changes, and contribute back via pull requests.
 
-**Skills Repository:** https://github.com/obra/superpowers-skills
+**Skills Repository:** https://github.com/MaksimZinovev/superpowers-skills
 
 ## What You Get
 
@@ -21,6 +22,7 @@ All skills, scripts, and documentation live in the separate [superpowers-skills]
 - **Meta Skills** - Creating, testing, and contributing skills
 
 Plus:
+
 - **Slash Commands** - `/brainstorm`, `/write-plan`, `/execute-plan`
 - **Skills Search** - Grep-powered discovery of relevant skills
 - **Gap Tracking** - Failed searches logged for skill creation
@@ -35,7 +37,7 @@ Read the introduction: [Superpowers for Claude Code](https://blog.fsck.com/2025/
 
 ```bash
 # In Claude Code
-/plugin marketplace add obra/superpowers-marketplace
+/plugin marketplace add MaksimZinovev/superpowers-marketplace
 /plugin install superpowers@superpowers-marketplace
 ```
 
@@ -64,7 +66,7 @@ If you forked the skills repository during setup, you can contribute improvement
 1. Edit skills in `~/.config/superpowers/skills/`
 2. Commit your changes
 3. Push to your fork
-4. Open a PR to `obra/superpowers-skills`
+4. Open a PR to `MaksimZinovev/superpowers-skills`
 
 ## Quick Start
 
@@ -81,16 +83,19 @@ ${SUPERPOWERS_SKILLS_ROOT}/skills/using-skills/find-skills 'TDD|debug'  # Regex 
 ### Using Slash Commands
 
 **Brainstorm a design:**
+
 ```
 /brainstorm
 ```
 
 **Create an implementation plan:**
+
 ```
 /write-plan
 ```
 
 **Execute the plan:**
+
 ```
 /execute-plan
 ```
@@ -100,17 +105,20 @@ ${SUPERPOWERS_SKILLS_ROOT}/skills/using-skills/find-skills 'TDD|debug'  # Regex 
 ### Skills Library
 
 **Testing** (`skills/testing/`)
+
 - test-driven-development - RED-GREEN-REFACTOR cycle
 - condition-based-waiting - Async test patterns
 - testing-anti-patterns - Common pitfalls to avoid
 
 **Debugging** (`skills/debugging/`)
+
 - systematic-debugging - 4-phase root cause process
 - root-cause-tracing - Find the real problem
 - verification-before-completion - Ensure it's actually fixed
 - defense-in-depth - Multiple validation layers
 
 **Collaboration** (`skills/collaboration/`)
+
 - brainstorming - Socratic design refinement
 - writing-plans - Detailed implementation plans
 - executing-plans - Batch execution with checkpoints
@@ -121,6 +129,7 @@ ${SUPERPOWERS_SKILLS_ROOT}/skills/using-skills/find-skills 'TDD|debug'  # Regex 
 - receiving-code-review - Responding to feedback
 
 **Meta** (`skills/meta/`)
+
 - writing-skills - TDD for documentation, create new skills
 - sharing-skills - Contribute skills back via branch and PR
 - testing-skills-with-subagents - Validate skill quality
@@ -140,6 +149,7 @@ ${SUPERPOWERS_SKILLS_ROOT}/skills/using-skills/find-skills 'TDD|debug'  # Regex 
 - **search-conversations** - Semantic search of past Claude sessions (in remembering-conversations skill)
 
 **Using tools:**
+
 ```bash
 ${SUPERPOWERS_SKILLS_ROOT}/skills/using-skills/find-skills              # Show all skills
 ${SUPERPOWERS_SKILLS_ROOT}/skills/using-skills/find-skills pattern      # Search skills
@@ -167,5 +177,5 @@ MIT License - see LICENSE file for details
 
 ## Support
 
-- **Issues**: https://github.com/obra/superpowers/issues
-- **Marketplace**: https://github.com/obra/superpowers-marketplace
+- **Issues**: https://github.com/MaksimZinovev/superpowers/issues
+- **Marketplace**: https://github.com/MaksimZinovev/superpowers-marketplace
