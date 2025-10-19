@@ -4,6 +4,11 @@
 set -euo pipefail
 
 # Set SUPERPOWERS_SKILLS_ROOT environment variable
+echo "Setting SUPERPOWERS_SKILLS_ROOT environment variable..."
+echo ${CLAUDE_PLUGIN_SESSION_ENV_FILE}
+
+echo "CLAUDE_PLUGIN_ROOT"
+echo "${CLAUDE_PLUGIN_ROOT}"
 export SUPERPOWERS_SKILLS_ROOT="${HOME}/.config/superpowers/skills"
 
 # Run skills initialization script (handles clone/fetch/auto-update)
